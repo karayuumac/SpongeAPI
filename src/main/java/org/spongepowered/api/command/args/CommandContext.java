@@ -147,10 +147,10 @@ public final class CommandContext {
         if (values.size() == 1) {
             return (T) values.iterator().next();
         } else if (values.isEmpty()) {
-            throw new NoSuchElementException();
+            throw new NoSuchElementException(String.format("There are no entries for the key \"%s\"!", key));
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(String.format("There is more than one entry for the key \"%s\"!", key));
     }
 
     /**
@@ -258,7 +258,7 @@ public final class CommandContext {
      * A snapshot of a {@link CommandContext}. This object does not contain any
      * public API methods, a snapshot should be considered a black box.
      */
-    public class Snapshot {
+    public final class Snapshot {
 
         final Multimap<String, Object> args;
 
