@@ -32,8 +32,10 @@ package org.spongepowered.api.service.context;
 public interface ContextualService<T extends Contextual> {
 
     /**
-     * Register a function that calculates {@link Context}s relevant to a 
-     * {@link Contextual} given at the time the function is called.
+     * Registers a {@link ContextCalculator} for use by this service.
+     *
+     * <p>It is not guaranteed that the calculator will be used by the service,
+     * as some implementations may not support contexts.</p>
      *
      * @param calculator The context calculator to register
      */
